@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  tasks:
+    - name: Update all packages to the latest version
+      apt:
+        update_cache: yes
+        upgrade: yes
+        cache_valid_time: 3600
+
+    - name: Ensure iptables is installed
+      apt:
+        name: iptables
+        state: present
+
+    - name: Configure iptables for SSH access
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: 22
+        source: 0.0.0.0/0
+        jump: ACCEPT
+
+
+    - name: Drop all other incoming connections
+      iptables:
+        chain: INPUT
+        jump: DROP
