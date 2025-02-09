@@ -12,11 +12,11 @@
 4. AWS CLI Configured: Ensure your AWS CLI is configured with proper credentials and region.
 
 ## Tasks: 
-Step 1: Define a Packer Template for AWS AMIs
+# Step 1: Define a Packer Template for AWS AMIs
 #find the attached packer template in this repo, add your aws credentials. 
-Step 2: Use Ansible to Provision Security Configurations
+# Step 2: Use Ansible to Provision Security Configurations
 #find the attached ansible playbook in this repo.
-Step 3: Build the AMI with Packer
+# Step 3: Build the AMI with Packer
 
 ```bash
 vi aws-ubuntu.pkr.hcl
@@ -26,7 +26,7 @@ packer fmt .
 packer validate .
 packer build .
 ```
-Step 4: Deploy an EC2 Instance from the Generated AMI
+# Step 4: Deploy an EC2 Instance from the Generated AMI
 1. Use the AWS CLI or Console to launch a new EC2 instance.
 2. Verify the EC2 instance.
 
